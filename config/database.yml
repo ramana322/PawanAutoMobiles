@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: pawan_auto_mobiles
+  pool: 5
+  host: localhost
+  username: postgres
+  password: password
