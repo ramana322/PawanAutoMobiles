@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 20181012175213) do
     t.string "description"
     t.float "amount"
     t.integer "paid_by"
-    t.integer "category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.integer "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,4 +101,15 @@ ActiveRecord::Schema.define(version: 20181012175213) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "expenditures", force: :cascade do |t|
+    t.date "spent_on"
+    t.string "description"
+    t.float "amount"s
+    t.integer "paid_to"
+    t.integer "category_id"
+    t.integer "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
 end
