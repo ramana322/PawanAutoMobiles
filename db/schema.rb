@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20181012175213) do
   create_table "expenditures", force: :cascade do |t|
     t.date "spent_on"
     t.string "description"
-    t.float "amount"s
+    t.float "amount" 
     t.integer "paid_to"
     t.integer "category_id"
     t.integer "created_by"
