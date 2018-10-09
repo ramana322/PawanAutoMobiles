@@ -1,7 +1,37 @@
-<h> new entry </h>
-
-<%= form_for @expenditure do |f| %>
- 
+<h1>Expenditure Entry</h1>
+<% if @expenditure.errors.any? %>
+<ul>
+  <% @expenditure.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
 <% end %>
-
-		    
+<%= form_for @expenditure do |f| %>
+<p>
+<%= f.label :spent_on %><br/>
+<%= f.text_field :spent_on %>
+</p>
+<p>
+<%= f.label :description %><br/>
+<%= f.text_field :description %>
+</p>
+<p>
+<%= f.label :Amount %><br/>
+<%= f.text_field :amount %>
+</p>
+<p>
+<%= f.label :paid_to %><br/>
+<%= f.text_field :paid_to %>
+</p>
+<p>
+<%= f.label :Category_ID %><br/>
+<%= f.text_field :category_id %>
+</p>
+<p>
+<%= f.label :Created_By %><br/>
+<%= f.text_field :created_by %>
+</p>
+<p>
+<%= f.submit %>
+</p>
+<% end %>

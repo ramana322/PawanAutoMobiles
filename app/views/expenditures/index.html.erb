@@ -1,5 +1,6 @@
-<h2> Expenditures </h2> 
-<h3 align="right"><button type="button" class="btn btn-primary">New Entry</button></h3>
+<h2> Expenditures </h2>
+
+<%= link_to "New", new_expenditure_path, class: 'btn btn-primary align-right' %>
 
 <table class="table table-inverse">
   <thead>
@@ -10,7 +11,6 @@
       <th>Amount</th>
       <th>Paid_to</th>
       <th>Category_id</th>
-      <th>Paid_to</th>
       <th>Created_by</th>
     </tr>
   </thead>
