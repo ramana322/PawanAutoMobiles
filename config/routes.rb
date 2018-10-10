@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 	
 
 	root to: "dashboard#index"
-	get 'expenditure', to: 'expenditure#expenditure'
-    get 'category', to: 'category#category'
-
+	resources :categories
     resources :expenditures
 
 

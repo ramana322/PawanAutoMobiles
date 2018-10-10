@@ -1,4 +1,4 @@
-<h1>Expenditure Entry</h1>
+<h1>Edit Expenditure</h1>
 <% if @expenditure.errors.any? %>
 <ul>
   <% @expenditure.errors.full_messages.each do |msg| %>
@@ -24,7 +24,14 @@
 <%= f.text_field :paid_to %>
 </p>
 <p>
+<%= f.label :Category_ID %><br/>
+<%= f.text_field :category_id %>
+</p>
+<p>
+<%= f.label :Created_By %><br/>
+<%= f.text_field :created_by %>
+</p>
+<p>
 <%= f.submit %>
 </p>
-<%= link_to "Back to Expenditures List", expenditures_path %>
 <% end %>

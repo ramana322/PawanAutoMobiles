@@ -1,5 +1,5 @@
 class Expenditure < ApplicationRecord
 
-validates :spent_on, presence: true
+validates :spent_on, :amount, presence: true
 
 end
