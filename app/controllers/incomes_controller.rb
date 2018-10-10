@@ -1,7 +1,9 @@
 class IncomesController < ApplicationController
 
 	def index
-		@incomes = Income.all
+		@incomes = Income.all.group_by do |income|
+			income.recieved_on.beginning_of_month 
+		end
 	end
 
 	def new
@@ -54,8 +56,6 @@ class IncomesController < ApplicationController
 				    :recieved_on,
 				    :description,
 				    :amount,
-				    :paid_by,
-				    :category_id
 					)
 	end
 
