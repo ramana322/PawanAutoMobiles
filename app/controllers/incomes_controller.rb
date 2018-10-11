@@ -3,7 +3,7 @@ class IncomesController < ApplicationController
 	def index
 		@incomes = Income.all.group_by do |income|
 			income.recieved_on.beginning_of_month 
-		end
+		end.sort.reverse.to_h
 	end
 
 	def new
