@@ -80,10 +80,32 @@
     <div id="wrapper">
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <%= navigation_link('Dashboard', root_path, 'nav-item', 'nav-link', 'fas fa-fw fa-tachometer-alt') %>
-        <%= navigation_link('Expenditure', expenditures_path, 'nav-item', 'nav-link', 'fas fa-fw fa-folder') %>
-        <%= navigation_link('Income', incomes_path, 'nav-item', 'nav-link', 'fas fa-fw fa-chart-area') %>
-        <%= navigation_link('Deliveries', deliveries_path, 'nav-item', 'nav-link', 'fas fa-fw fa-table') %>
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= categories_path %>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Categories</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= expenditures_path %>">
+            <i class="fas fa-fw fa-folder"></i>
+           <span> Expenditures</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= incomes_path %>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Incomes</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Deliveries</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
