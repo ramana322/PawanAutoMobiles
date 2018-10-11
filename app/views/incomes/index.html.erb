@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">Income Month Wise</div>
+  <div class="card-body">
+    <div id="accordion">
+      <% @incomes.each do |month, incomes| %>
+
+        <div class="card">
+          <div class="card-header" id="<%= (month.to_time.to_i + 1).to_s %>">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#<%= month.to_time.to_i.to_s %>" aria-expanded="true" aria-controls="<%= month.to_time.to_i.to_s %>">
+                <%= month.strftime('%B') %>
+              </button>
+
+              <%= link_to 'Add Income', new_income_path, class: 'btn btn-primary float-sm-right' %>
+            </h5>
+          </div>
+
+          <div id="<%= month.to_time.to_i.to_s %>" class="collapse show" aria-labelledby="<%= (month.to_time.to_i + 1).to_s %>" data-parent="#accordion">
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Recieved On</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>#</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% incomes.each do |income| %>
+                    <tr>
+                      <td><%= income.recieved_on.try(:strftime, "%d/%m/%Y") %></td>
+                      <td><%= income.description %></td>
+                      <td><%= income.amount %></td>
+                      <td><%= link_to 'Edit', edit_income_path(income) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
