@@ -10,6 +10,7 @@ class DeliveriesController < ApplicationController
 
   def new
     @delivery = Delivery.new
+    @delivery.build_customer
   end
 
   def edit
@@ -52,6 +53,17 @@ class DeliveriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def delivery_params
-    params.fetch(:delivery, {})
+    params.require(:delivery).permit(
+      :engine_no,
+      :chassis_no,
+      :total_cost,
+      :subsidy,
+      :insurance,
+      :registration,
+      :warranty,
+      :transport,
+      :agreements,
+      customer_attributes: [:id, :name, :address, :mobile_number]
+    )
   end
 end
