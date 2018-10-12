@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181011173920) do
+ActiveRecord::Schema.define(version: 20181012130641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20181011173920) do
     t.float "warranty"
     t.float "transport"
     t.float "agreements"
+    t.date "delivered_on"
     t.index ["customer_id"], name: "index_deliveries_on_customer_id"
   end
 
