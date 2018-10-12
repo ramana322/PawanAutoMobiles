@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    Deliveries
+    <%= link_to 'New Delivery', new_delivery_path, class: 'btn btn-primary float-sm-right' %>
+  </div>
+  <div class="card-body">
+    <% if @deliveries.present? %>
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Engine Number</th>
+            <th>Chassis Number</th>
+            <th>Customer Name</th>
+            <th>Mobile Number</th>
+            <th>Total Cost</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each_with_index do |delivery, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= delivery.delivered_on.strftime("%m/%d/%Y") %></td>
+              <td><%= delivery.engine_no %></td>
+              <td><%= delivery.chassis_no %></td>
+              <td><%= delivery.customer_name %></td>
+              <td><%= delivery.customer_mobile_number %></td>
+              <td><%= delivery.total_cost %></td>
+              <td><%= link_to 'Edit', edit_delivery_path(delivery) %> | <%= link_to 'Delete', delivery_path(delivery), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      No Deliveries Found.
+    <% end %>
+  </div> 
+</div>
