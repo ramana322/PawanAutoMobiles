@@ -21,7 +21,7 @@ class DeliveriesController < ApplicationController
 
     respond_to do |format|
       if @delivery.save
-        format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
+        format.html { redirect_to deliveries_path, notice: 'Delivery was successfully created.' }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class DeliveriesController < ApplicationController
   def update
     respond_to do |format|
       if @delivery.update(delivery_params)
-        format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
+        format.html { redirect_to deliveries_path, notice: 'Delivery was successfully updated.' }
       else
         format.html { render :edit }
       end
