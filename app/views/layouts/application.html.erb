@@ -71,28 +71,10 @@
     <div id="wrapper">
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#" role="button">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Expenditure</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= incomes_path %>">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Income</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= deliveries_path %>">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Deliveries</span></a>
-        </li>
+        <%= navigation_link('Dashboard', root_path, 'nav-item', 'nav-link', 'fas fa-fw fa-tachometer-alt') %>
+        <%= navigation_link('Expenditure', '#', 'nav-item', 'nav-link', 'fas fa-fw fa-folder') %>
+        <%= navigation_link('Income', incomes_path, 'nav-item', 'nav-link', 'fas fa-fw fa-chart-area') %>
+        <%= navigation_link('Deliveries', deliveries_path, 'nav-item', 'nav-link', 'fas fa-fw fa-table') %>
       </ul>
 
       <div id="content-wrapper">
