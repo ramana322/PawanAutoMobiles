@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="card card-login mx-auto mt-5">
+    <div class="card-header">Change yout password</div>
+    <div class="card-body">
+
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+      
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
+      
+        <div class="form-group">
+          <div class="form-label-group">
+          <%= f.input :password,
+                label: "New password",
+                required: true,
+                autofocus: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+
+          <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Change my password", class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Log in", new_session_path(resource_name), class: 'd-block small' %><br />
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
