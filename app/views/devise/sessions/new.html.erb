@@ -4,6 +4,8 @@
     <div class="card-body">
     
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render partial: '/devise/shared/flash_messages' %>
+        <% flash.clear %>
         <div class="form-group">
           <div class="form-label-group">
           <%= f.text_field(:email, as: :email,
