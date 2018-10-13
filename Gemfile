@@ -30,6 +30,8 @@ gem 'bootstrap_sb_admin_base_v1'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 
+gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
