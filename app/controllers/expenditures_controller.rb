@@ -5,13 +5,13 @@ class ExpendituresController < ApplicationController
 	end
 
 	def index
-    @expenditures = Expenditure.all.group_by do |expenditure|
+    @expenditures = Expenditure.find_by_year(Date.today.year).group_by do |expenditure|
       expenditure.spent_on.beginning_of_month 
     end.sort.reverse.to_h
 	end
 
 	def create
-		@expenditure = Expenditure.new(expenditure_params)
+		@expenditure = Expenditure.new(expenditure_params.merge(created_by: current_user.id))
 			
 		if @expenditure.save
 			flash[:notice] = "Expenditure was successfully created"
