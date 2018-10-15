@@ -1,25 +1,60 @@
-<h2> Listing all Expenditures</h2>
-<%= link_to "New Entry", new_expenditure_path, class: 'btn btn-primary align-right' %>
-<table class="table table-inverse">
-    <tr>
-      <th>S.no</th>
-      <th>Spent_on</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Paid_to</th>
-    </tr>
-<% @expenditures.each do |expenditure| %>
-     <tr>
-      <td><%= expenditure.id%></td>
-      <td><%= expenditure.spent_on %></td>
-      <td><%= expenditure.description %> </td>
-      <td><%= expenditure.amount %> </td>
-      <td><%= expenditure.paid_to %> </td>
-<td><%= link_to 'Edit', edit_expenditure_path(expenditure) %></td>
+<div class="card-body">
+  <% if Expenditure.count > 0 %>
+    <div id="accordion">
+      <% @expenditures.each do |month, expenditures| %>
+        <% month_name =  month.strftime('%B') %>
 
-<td><%= link_to 'Show', expenditure_path(expenditure) %></td>
-<td><%= link_to 'Delete', expenditure_path(expenditure), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
+        <div class="card">
+          <div class="card-header" id="<%= month_name %>">
+            <h5 class="mb-0">
+              <button class="btn btn-link <%= (month.month != Date.today.month) ? 'collapsed' : '' %>" data-toggle="collapse" data-target="#<%= (month_name+"_area")%>" aria-expanded="false" aria-controls="<%= (month_name+"_area")%>">
+                <%= month_name %>
+              </button>
+            </h5>
+          </div>
 
+          <div id="<%= (month_name+"_area")%>" class="collapse <%= (month.month == Date.today.month) ? 'show' : '' %>" aria-labelledby="<%= month_name %>" data-parent="#accordion">
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Spent On</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>#</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% expenditures.each do |expenditure| %>
+                    <tr>
+                      <td><%= expenditure.spent_on.try(:strftime, "%d/%m/%Y") %></td>
+                      <td><%= expenditure.description %></td>
+                      <td><%= expenditure.amount %></td>
+                      <td><%= link_to 'Edit', edit_expenditure_path(expenditure) %> | <%= link_to 'Delete', expenditure_path(expenditure), method: :delete %></td> 
+                    </tr>
+                  <% end %>
+                  <tr class="text-success">
+                    <td colspan="2" class="text-center">Total</td>
+                    <td><%= expenditures.map(&:amount).sum %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="card">
+      <div class="card-body">No Expenditure Transactions Added.</div> 
+    </div>
   <% end %>
-</table>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <%= link_to 'Add Expenditure', new_expenditure_path, class: 'btn btn-primary' %>    
+      </div>
+    </div>
+  </div>
+</div>
