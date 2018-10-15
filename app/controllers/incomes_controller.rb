@@ -1,7 +1,7 @@
 class IncomesController < ApplicationController
 
 	def index
-		@incomes = Income.all.group_by do |income|
+		@incomes = Income.find_by_year(Date.today.year).group_by do |income|
 			income.recieved_on.beginning_of_month 
 		end.sort.reverse.to_h
 	end
@@ -11,7 +11,7 @@ class IncomesController < ApplicationController
 	end
 
 	def create
-		@income = Income.new(income_params)
+		@income = Income.new(income_params.merge(created_by: current_user.id))
 
 		if @income.save
 			flash[:notice] = "Income has been added successfully."

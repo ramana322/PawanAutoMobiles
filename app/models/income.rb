@@ -6,6 +6,10 @@ class Income < ApplicationRecord
 
 	default_scope { order_by_recieved_on }
 
+	def self.find_by_year(year)
+  	where('extract(year from recieved_on) = ?', year)
+	end
+
 	def check_recieved_on
 		return true if recieved_on.blank?
 		return true if (Date.parse(recieved_on.to_s) <= Date.today)

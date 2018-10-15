@@ -1,0 +1,42 @@
+
+<%= simple_form_for(@expenditure) do |f| %>
+  <div class="form-group row">
+    <%= f.label :spent_on, class: "col-form-label col-sm-2" %>
+    <div class="col-sm-6">
+      <%= f.text_field(:spent_on, as: :date, value: f.object.spent_on.try(:strftime,"%d/%m/%Y"),  :class => "form-control") %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :description, class: "col-form-label col-sm-2" %>
+    <div class="col-sm-6">
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :amount, class: "col-form-label col-sm-2" %>
+    <div class="col-sm-6">
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <%= f.submit "Save", class: "btn btn-primary mb-2" %>
+      <%= link_to "Cancel", :back,  class: 'btn btn-secondary mb-2', data: { confirm: 'Are you sure you want to leave this page?' } %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $("#expenditure_spent_on").datepicker({
+      format: 'dd/mm/yyyy',
+      orientation:  'top auto',
+      zIndexOffset: 999,
+      orientation: 'bottom',
+      autoclose: true
+    });
+  });
+</script>

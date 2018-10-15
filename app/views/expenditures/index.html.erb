@@ -1,8 +1,9 @@
+
 <h5 class="card-header text-center"><%= Date.today.year %></h5>
 <div class="card-body">
-  <% if Income.count > 0 %>
+  <% if Expenditure.count > 0 %>
     <div id="accordion">
-      <% @incomes.each do |month, incomes| %>
+      <% @expenditures.each do |month, expenditures| %>
         <% month_name =  month.strftime('%B') %>
 
         <div class="card">
@@ -19,24 +20,24 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Recieved On</th>
+                    <th>Spent On</th>
                     <th>Description</th>
                     <th>Amount</th>
                     <th>#</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% incomes.each do |income| %>
+                  <% expenditures.each do |expenditure| %>
                     <tr>
-                      <td><%= income.recieved_on.try(:strftime, "%d/%m/%Y") %></td>
-                      <td><%= income.description %></td>
-                      <td><%= income.amount %></td>
-                      <td><%= link_to 'Edit', edit_income_path(income) %> | <%= link_to 'Delete', income_path(income), method: :delete %></td> 
+                      <td><%= expenditure.spent_on.try(:strftime, "%d/%m/%Y") %></td>
+                      <td><%= expenditure.description %></td>
+                      <td><%= expenditure.amount %></td>
+                      <td><%= link_to 'Edit', edit_expenditure_path(expenditure) %> | <%= link_to 'Delete', expenditure_path(expenditure), method: :delete %></td> 
                     </tr>
                   <% end %>
                   <tr class="text-success">
                     <td colspan="2" class="text-center">Total</td>
-                    <td><%= incomes.map(&:amount).sum %></td>
+                    <td><%= expenditures.map(&:amount).sum %></td>
                   </tr>
                 </tbody>
               </table>
@@ -47,14 +48,14 @@
     </div>
   <% else %>
     <div class="card">
-      <div class="card-body">No Income Transactions Added.</div> 
+      <div class="card-body">No Expenditure Transactions Added.</div> 
     </div>
   <% end %>
 
   <div class="row">
     <div class="col-sm-12">
       <div class="text-center">
-        <%= link_to 'Add Income', new_income_path, class: 'btn btn-primary' %>    
+        <%= link_to 'Add Expenditure', new_expenditure_path, class: 'btn btn-primary' %>    
       </div>
     </div>
   </div>

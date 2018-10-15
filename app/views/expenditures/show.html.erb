@@ -1,0 +1,15 @@
+<h1>Showing selected expenditure</h1>
+<p>
+spent_on: <%= @expenditure.spent_on %>
+</p>
+<p>
+Description: <%= @expenditure.description %>
+</p>
+<p>
+Amount: <%= @expenditure.amount %>
+</p>
+<%= link_to "Edit", edit_expenditure_path, class: 'btn btn-primary align-right' %>
+<%= link_to "Back to All Expenditure", expenditures_path, class: 'btn btn-primary align-right' %>
+
+<%= link_to "Delete", edit_expenditure_path, class: 'btn btn-primary align-right' %>
+
