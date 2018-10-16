@@ -1,14 +1,9 @@
 <%= simple_form_for(delivery) do |f| %>
-  <ul>
-    <% delivery.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-
   <div class="form-group row">
     <%= f.label :delivered_on, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field(:delivered_on, as: :date, value: f.object.delivered_on.try(:strftime,"%d/%m/%Y"),  :class => "form-control") %>
+      <%= error_messages_for(f.object, :delivered_on) %>
     </div>
   </div>
 
@@ -16,6 +11,7 @@
     <%= f.label :engine_no, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field(:engine_no,  :class => "form-control") %>
+      <%= error_messages_for(f.object, :engine_no) %>
     </div>
   </div>
 
@@ -23,6 +19,7 @@
     <%= f.label :chassis_no, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :chassis_no, class: 'form-control' %>
+      <%= error_messages_for(f.object, :chassis_no) %>
     </div>
   </div>
 
@@ -31,6 +28,7 @@
       <%= c.label :name, class: "col-form-label col-sm-2" %>
       <div class="col-sm-6">
         <%= c.text_field :name, class: 'form-control' %>
+        <%= error_messages_for(c.object, :name) %>
       </div>
     </div>
 
@@ -38,6 +36,7 @@
       <%= c.label :address, class: "col-form-label col-sm-2" %>
       <div class="col-sm-6">
         <%= c.input :address, as: :text, label: false, class: 'form-control' %>
+        <%= error_messages_for(c.object, :address) %>
       </div>
     </div>
 
@@ -45,6 +44,7 @@
       <%= c.label :mobile_number, class: "col-form-label col-sm-2" %>
       <div class="col-sm-6">
         <%= c.text_field :mobile_number, class: 'form-control' %>
+        <%= error_messages_for(c.object, :mobile_number) %>
       </div>
     </div>
   <% end %>
@@ -53,6 +53,7 @@
     <%= f.label :total_cost, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :total_cost, class: 'form-control' %>
+      <%= error_messages_for(f.object, :total_cost) %>
     </div>
   </div>
 
@@ -60,6 +61,7 @@
     <%= f.label :subsidy, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :subsidy, class: 'form-control' %>
+      <%= error_messages_for(f.object, :subsidy) %>
     </div>
   </div>
   
@@ -67,6 +69,7 @@
     <%= f.label :insurance, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :insurance, class: 'form-control' %>
+      <%= error_messages_for(f.object, :insurance) %>
     </div>
   </div>
 
@@ -74,6 +77,7 @@
     <%= f.label :registration, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :registration, class: 'form-control' %>
+      <%= error_messages_for(f.object, :registration) %>
     </div>
   </div>
 
@@ -81,6 +85,7 @@
     <%= f.label :warranty, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :warranty, class: 'form-control' %>
+      <%= error_messages_for(f.object, :warranty) %>
     </div>
   </div>
 
@@ -88,6 +93,7 @@
     <%= f.label :transport, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :transport, class: 'form-control' %>
+      <%= error_messages_for(f.object, :transport) %>
     </div>
   </div>
 
@@ -95,6 +101,7 @@
     <%= f.label :agreements, class: "col-form-label col-sm-2" %>
     <div class="col-sm-6">
       <%= f.text_field :agreements, class: 'form-control' %>
+      <%= error_messages_for(f.object, :agreements) %>
     </div>
   </div>
 

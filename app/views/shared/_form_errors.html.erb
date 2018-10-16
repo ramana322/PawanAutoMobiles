@@ -1,0 +1,9 @@
+<% if object.errors.any? %>
+	<div class="alert m-alert--default" role="alert">
+	  <ul>
+	    <% object.errors.each do |attribute,message| %>
+	      <li><%="#{attribute} #{message}"%></li>
+	    <% end %>
+	  </ul>
+	</div>
+<% end %>

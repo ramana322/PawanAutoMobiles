@@ -1,6 +1,6 @@
 class Expenditure < ApplicationRecord
 
-	validates :spent_on, :amount, presence: true
+	validates :spent_on, :description, :amount, presence: true
 	validate :check_spent_on
 
 	scope :order_by_spent_on, -> { order("spent_on ASC") }
