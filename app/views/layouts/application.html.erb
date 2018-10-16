@@ -7,15 +7,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <% flash.each do |name, msg| %>
-
-  <ul>
-
-  <li><%= msg %></li>
-
-  </ul>
-
-  <% end %>
 
   <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -88,6 +79,7 @@
 
       <div id="content-wrapper">
         <div class="container-fluid">
+          <%= render partial: '/shared/flash_messages' %>
         	<%= yield %>
         </div>
         <!-- /.container-fluid -->
